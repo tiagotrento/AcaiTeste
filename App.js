@@ -11,10 +11,10 @@ export default class App extends Component {
     return (
 
 
-      <Router titleStyle={{ Color: '#fff' }}>
-        <Scene navigationBarStyle={{ backgroundColor: '#fff' }} hideNavBar={true} key='inicio' component={Inicio} />
-        <Scene navigationBarStyle={{ backgroundColor: '#3CB371' }} key='home' component={Home} hideNavBar={false} title="Bem Vindo" />
-        <Scene navigationBarStyle={{ backgroundColor: '#3CB371' }} key='Produto' component={Produto} hideNavBar={false} title="Acompanhamentos" initial />
+      <Router titleStyle={{ Color: 'white' }}>
+        <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} hideNavBar={true} key='inicio' component={Inicio} />
+        <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='home' component={Home} hideNavBar={false} title="Bem Vindo" />
+        <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Produto' component={Produto} hideNavBar={false} title="Acompanhamentos"  />
       </Router>
 
     );

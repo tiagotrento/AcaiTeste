@@ -24,7 +24,7 @@ export default class Home extends Component {
           {/* <TouchableHighlight
           onPress={() => { Actions.formLogin(); }}> */}
           <TouchableHighlight
-          // onPress={() => { Actions.produtos(); }}
+          onPress={() => { Actions.Produto(); }}
           >
             <Image style={styles.imgMenu} source={pote1} />
 
