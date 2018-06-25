@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, Button } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import ToggleSwitch from 'toggle-switch-react-native'
+import { Actions } from 'react-native-router-flux';
 export default class App extends Component {
     render() {
         console.disableYellowBox = true;
@@ -64,10 +65,11 @@ export default class App extends Component {
                             onToggle={(isOn) => console.log('changed to : ', isOn)}
                         />
                     </View>
-                    <View style={{padding:20}} >
-                    < Button
-                        title='Confirmar'
-                    />
+                    <View>
+                        <TouchableHighlight
+                            onPress={() => Actions.Login()} >
+                            <Text style={{ fontSize: 20 }} >Confirmar Pedido</Text>
+                        </TouchableHighlight>
                     </View>
                 </ScrollView>
 
