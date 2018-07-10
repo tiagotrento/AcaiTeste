@@ -1,106 +1,99 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableHighlight, Alert } from 'react-native';
-import ToggleSwitch from 'toggle-switch-react-native'
-import { Actions } from 'react-native-router-flux';
-
+import { StyleSheet, Text, View, Switch, ScrollView } from 'react-native';
 import firebase from 'firebase'
 
 export default class App extends Component {
+    constructor() {
+        super()
+        this.state = {
+            SwitchOnValueHolder: false
+        }
+    }
+
+    Magica = (value) => {
+        this.setState({
+
+            SwitchOnValueHolder: value
+
+        })
+        if (value == true) {
+            firebase.database().ref(`/adicionais/`)
+                .push('açai')
+        }
+        else {
+
+            firebase.database().ref(`/adicionais/`).remove()
+        }
+    }
+
     render() {
-        refProdutos = firebase.database().ref(`/adicionais/`)
-        .push(id)
-        console.disableYellowBox = true;
+
         return (
-            <View style={styles.container}>
-            
+
+            <View style={styles.MainContainer}>
                 <ScrollView>
 
                     <View style={styles.styleList} >
-                        <View style={{ paddingRight: 190 }} >
+                        <View style={{ paddingRight: 210 }} >
                             <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Banana</Text>
                         </View>
-                        <ToggleSwitch
-                            id= 'Banana'
-                            isOn={false}
-                            onColor='green'
-                            offColor='#a0a0a0'
-                            // label  = 'Banana'
-                            // labelStyle={{ color: 'black', fontSize: 20, fontWeight: '400' }}
-                            size='medium'
-                            onToggle={(isOn) => refProdutos }
-                        />
-
+                        <Switch
+                            onValueChange={(value) => this.Magica(value)}
+                            style={{ marginBottom: 10 }}
+                            value={this.state.SwitchOnValueHolder} />
                     </View>
                     <View style={styles.styleList} >
-                        <View style={{ paddingRight: 190 }} >
+                        <View style={{ paddingRight: 200 }} >
                             <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Morango</Text>
                         </View>
-                        <ToggleSwitch
-                            isOn={false}
-                            onColor='green'
-                            offColor='#a0a0a0'
-                            // label  = 'Banana'
-                            // labelStyle={{ color: 'black', fontSize: 20, fontWeight: '400' }}
-                            size='medium'
-                            onToggle={(isOn) => console.log('changed to : ', isOn)}
-                        />
+                        <Switch
+                            onValueChange={(value) => this.Magica(value)}
+                            style={{ marginBottom: 10 }}
+                            value={this.state.SwitchOnValueHolder} />
+                    </View>
+                    <View style={styles.styleList} >
+                        <View style={{ paddingRight: 208 }} >
+                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Abacaxi</Text>
+                        </View>
+                        <Switch
+                            onValueChange={(value) => this.Magica(value)}
+                            style={{ marginBottom: 10 }}
+                            value={this.state.SwitchOnValueHolder} />
+                    </View>
+                    <View style={styles.styleList} >
+                        <View style={{ paddingRight: 250 }} >
+                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Kiwi</Text>
+                        </View>
+                        <Switch
+                            onValueChange={(value) => this.Magica(value)}
+                            style={{ marginBottom: 10 }}
+                            value={this.state.SwitchOnValueHolder} />
                     </View>
                     <View style={styles.styleList} >
                         <View style={{ paddingRight: 190 }} >
-                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Pinga 51</Text>
+                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Amendoim</Text>
                         </View>
-                        <ToggleSwitch
-                            isOn={false}
-                            onColor='green'
-                            offColor='#a0a0a0'
-                            // label  = 'Banana'
-                            // labelStyle={{ color: 'black', fontSize: 20, fontWeight: '400' }}
-                            size='medium'
-                            onToggle={(isOn) => console.log('changed to : ', isOn)}
-                        />
+                        <Switch
+                            onValueChange={(value) => this.Magica(value)}
+                            style={{ marginBottom: 10 }}
+                            value={this.state.SwitchOnValueHolder} />
                     </View>
-                    <View style={styles.styleList} >
-                        <View style={{ paddingRight: 190 }} >
-                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Banana</Text>
-                        </View>
-                        <ToggleSwitch
-                            isOn={false}
-                            onColor='green'
-                            offColor='#a0a0a0'
-                            // label  = 'Banana'
-                            // labelStyle={{ color: 'black', fontSize: 20, fontWeight: '400' }}
-                            size='medium'
-                            onToggle={(isOn) => Alert.alert('changed to : ', isOn)}
-                        />
-                    </View>
-                    <View>
-                        <TouchableHighlight
-                            onPress={() => Actions.Login()} >
-                            <Text style={{ fontSize: 20 }} >Confirmar Pedido</Text>
-                        </TouchableHighlight>
-                    </View>
-                </ScrollView>
-                {/* if (onToggle==isOn) {
-                            Alert.alert(
-                                'Alert Title',
-                                'My Alert Msg',
-                                [
-                                  {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-                                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                                  {text: 'OK', onPress: () => console.log('OK Pressed')},
-                                ],
-                                { cancelable: false }
-                              )
-                        } */}
-            </View>
 
+
+                </ScrollView>
+            </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
-    container: {
-        // backgroundColor: 'red',
+
+    MainContainer: {
+
+        // justifyContent: 'center',
+        // alignItems: 'center',
         flex: 1,
+        margin: 10,
         paddingTop: 75
 
     },
@@ -114,4 +107,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row'
     }
+
 });
+
