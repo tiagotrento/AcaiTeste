@@ -10,7 +10,9 @@
     "firebase": "^5.2.0",
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-flexi-radio-button": "^0.2.2",
     "react-native-router-flux": "^3.43.0",
+    "react-native-simple-radio-button": "^2.7.2",
     "react-native-switch-toggle": "^1.0.5",
     "toggle-switch-react-native": "^0.2.0"
   },
