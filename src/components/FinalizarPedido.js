@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import firebase from 'firebase';
+
 
 export default class FinalizaPedido extends Component{
     render(){
