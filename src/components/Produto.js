@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button'
 export default class App extends Component {
     constructor() {
+
         super()
         this.state = {
             SwitchOnValueHolder: false
@@ -24,10 +25,10 @@ export default class App extends Component {
 
 
     // ---------RADIO BUTTON------------
-    onSelect( index, value) {
+    onSelect(index, value) {
         this.setState({
             text: firebase.database().ref(`/Tipo de Açai/`)
-            .child('Sabor').set(value)
+                .child('Sabor').set(value)
         })
     }
     // ---------RADIO BUTTON------------
@@ -101,31 +102,31 @@ export default class App extends Component {
                 <View style={{ borderWidth: 1, borderRadius: 2 }} >
                     <Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >  Valor atual: 1 DOL </Text>
                 </View>
-                
+
                 <ScrollView>
 
-                <View style={{ alignItems: 'center', padding: 20  }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >Escolha o sabor do seu Açai</Text></View>
-                <View style={{ borderWidth: 0.5, borderRadius: 10 }} >
-                    <RadioGroup color='purple'
-                        onSelect={(index, value) => this.onSelect(index, value)}>
-                        <RadioButton value={'Açai Puro'} >
-                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai Puro</Text>
-                        </RadioButton>
+                    <View style={{ alignItems: 'center', padding: 20 }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >Escolha o sabor do seu Açai</Text></View>
+                    <View style={{ borderWidth: 0.5, borderRadius: 10 }} >
+                        <RadioGroup color='purple'
+                            onSelect={(index, value) => this.onSelect(index, value)}>
+                            <RadioButton value={'Açai Puro'} >
+                                <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai Puro</Text>
+                            </RadioButton>
 
-                        <RadioButton value={'Açai com Cupu'}>
-                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai com Cupu</Text>
-                        </RadioButton>
+                            <RadioButton value={'Açai com Cupu'}>
+                                <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai com Cupu</Text>
+                            </RadioButton>
 
-                        <RadioButton value={'Açai Fitnes'}>
-                            <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai Fitnes (Diete)</Text>
-                        </RadioButton>
-                    </RadioGroup>
+                            <RadioButton value={'Açai Fitnes'}>
+                                <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai Fitnes (Diete)</Text>
+                            </RadioButton>
+                        </RadioGroup>
 
-                    {/* <Text style={styles.text}>{this.state.text}</Text> */}
+                        {/* <Text style={styles.text}>{this.state.text}</Text> */}
 
-                </View>
+                    </View>
 
-                <View style={{ alignItems: 'center', padding: 20 }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} > Escolha Até Três Adicionais </Text></View>
+                    <View style={{ alignItems: 'center', padding: 20 }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} > Escolha Até Três Adicionais </Text></View>
                     <View style={styles.styleList} >
                         <View style={{ paddingRight: 210 }} >
                             <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Banana</Text>
