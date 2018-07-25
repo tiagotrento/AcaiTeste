@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, ScrollView, Button } from 'react-native';
+import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
 import firebase from 'firebase';
-import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button'
-export default class App extends Component {
+export default class Produto extends Component {
     constructor() {
 
         super()
@@ -32,7 +32,7 @@ export default class App extends Component {
         })
     }
     // ---------RADIO BUTTON------------
-
+    //#region "Ifs"
     Banana = (value) => {
         this.setState({
             SwitchOnValueHolder: value
@@ -92,6 +92,7 @@ export default class App extends Component {
         else {
             firebase.database().ref(`/adicionais/`).child('adicional5').remove()
         }
+        //#endregion
     };
 
     render() {
