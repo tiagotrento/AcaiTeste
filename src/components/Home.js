@@ -10,7 +10,7 @@ export default class Home extends Component {
     return (
       <View style={styles.menu}>
       <View>
-        <Text> Escolha o tamanho do seu Açaí </Text>
+        <Text style={{ fontSize: 20, color:'black' }} > Escolha o tamanho do seu Açaí </Text>
       </View>
          <View style={styles.menuGrupo}>
          
