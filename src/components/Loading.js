@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
-export default class Loading extends React.Component {
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux'
+export default class Loading extends Component {
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.props.navigation.navigate(user ? 'Main' : 'SignUp')
+  //   })
+  // }
+componentDidMount() {
+    const usuario = firebase.auth();
+
+    usuario.onAuthStateChanged(
+      (usuarioAtual) => {
+        if (usuarioAtual) {
+          Actions.Main();
+        } else {
+          Actions.Login();
+        }
+      }
+    );
+  }
+
+
   render() {
     return (
       <View style={styles.container}>

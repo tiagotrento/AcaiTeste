@@ -11,6 +11,8 @@ import Carrinho from './src/components/Carrinho';
 import Historico from './src/components/Historico';
 import TabeViews from './src/components/TabeViews';
 import Main from './src/components/Main';
+import Loading from './src/components/Loading';
+import SwitchNavigator from 'react-navigation';
 
 export default class App extends Component {
 
@@ -35,8 +37,10 @@ export default class App extends Component {
           component={Home} hideNavBar={false} title="Bem Vindo" />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Produto'
           component={Produto} hideNavBar={false} title="Acompanhamentos" />
+        <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Loading'
+          component={Loading} hideNavBar={true} title="Loading" initial />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Login'
-          component={Login} hideNavBar={true} title="Login" initial />
+          component={Login} hideNavBar={true} title="Login" />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='SignUp'
           component={SignUp} hideNavBar={false} title="SignUp" />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Main'

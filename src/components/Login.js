@@ -1,12 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import { Actions } from 'react-native-router-flux';
-
+import firebase from 'firebase';
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
   handleLogin = () => {
-    // TODO: Firebase stuff...
-    console.log('handleLogin')
+    firebase
+    .auth()
+    .createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then(() => Actions.Main())
+    .catch(error => this.setState({ errorMessage: error.message }))
+    
   }
   render() {
     return (

@@ -15,7 +15,7 @@
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-switch-toggle": "^1.0.5",
     "react-native-tab-view": "^1.0.2",
-    "react-navigation": "^2.9.1",
+    "react-navigation": "^2.9.3",
     "toggle-switch-react-native": "^0.2.0"
   },
   "devDependencies": {
