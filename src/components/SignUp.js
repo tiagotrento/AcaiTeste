@@ -7,7 +7,7 @@ export default class SignUp extends Component {
   state = { email: '', password: '', errorMessage: null }
   handleSignUp = () => {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => Actions.Main()).catch(error => this.setState({ errorMessage: error.message }))
+      .then(() => Actions.TabeViews()).catch(error => this.setState({ errorMessage: error.message }))
   }
   render() {
     return (

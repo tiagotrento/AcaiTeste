@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, ScrollView, Button } from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
 import firebase from 'firebase';
+import {Actions} from'react-native-router-flux';
 export default class Produto extends Component {
     constructor() {
 
@@ -177,7 +178,7 @@ export default class Produto extends Component {
                         <Button
                             color='purple'
                             title='Confirmar Pedido'
-                            onPress={false}
+                            onPress={() => { Actions.FinalizarPedido(); }}
                         />
                     </View>
                 </ScrollView>

@@ -14,7 +14,7 @@ componentDidMount() {
     usuario.onAuthStateChanged(
       (usuarioAtual) => {
         if (usuarioAtual) {
-          Actions.Home();
+          Actions.TabeViews();
         } else {
           Actions.Login();
         }

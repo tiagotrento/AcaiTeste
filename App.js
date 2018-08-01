@@ -45,7 +45,7 @@ export default class App extends Component {
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Main'
           component={Main} hideNavBar={false} title="Main" />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='FinalizarPedido'
-          component={FinalizaPedido} hideNavBar={false} title="Finalizar Pedido" />
+          component={FinalizaPedido} hideNavBar={false} title="Finalizar Pedido" initial />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Historico'
           component={Historico} hideNavBar={false} title="Historico" />
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='Carrinho'
