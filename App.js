@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Scene } from 'react-native-router-flux';
-
+import { Statusbar, View } from 'react-native';
 import Home from './src/components/Home';
 import Produto from './src/components/Produto';
 import Login from './src/components/Login';
@@ -29,7 +29,6 @@ export default class App extends Component {
   }
   render() {
     return (
-
       <Router titleStyle={{ Color: '#fff' }}>
         <Scene navigationBarStyle={{ backgroundColor: '#5c426b' }} key='TabeViews'
           component={TabeViews} hideNavBar={true} title="TabeViews" />
