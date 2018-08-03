@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Switch, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, Alert, Switch, ScrollView, Button } from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
 import firebase from 'firebase';
-import {Actions} from'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 export default class Produto extends Component {
     constructor() {
 
@@ -21,17 +21,36 @@ export default class Produto extends Component {
         };
         this.state = {
             Amendoim: false
-        }
+        };
+
+        this.state = {Inicial: 1};
+    
+
+    }
+    
+
+    inc = () => {
+        this.setState(prevState => ({ Inicial: prevState.Inicial + 1 }));
     }
 
+    dec() {
+        this.setState(prevState => ({ Inicial: prevState.Inicial - 1 }));
+        if (this.state.Inicial=='1') {
+            this.setState(prevState => ({ Inicial: prevState.Inicial + 1 }))
+        }
+    };
 
+    finalizaPedidoFnc() {
+
+    };
+   
     // ---------RADIO BUTTON------------
     onSelect(index, value) {
         this.setState({
             text: firebase.database().ref(`/Tipo de Açai/`)
                 .child('Sabor').set(value)
         })
-    }
+    };
     // ---------RADIO BUTTON------------
     //#region "Ifs"
     Banana = (value) => {
@@ -95,19 +114,20 @@ export default class Produto extends Component {
         }
         //#endregion
     };
-
+//#region "toto o render"
     render() {
         return (
 
             <View style={styles.MainContainer}>
 
-                <View style={{ borderWidth: 1, borderRadius: 2 }} >
+                {/* <View style={{ borderWidth: 1, borderRadius: 2 }} >
                     <Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >  Valor atual: 1 DOL </Text>
-                </View>
+                </View> */}
 
                 <ScrollView>
-
-                    <View style={{ alignItems: 'center', padding: 20 }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >Escolha o sabor do seu Açai</Text></View>
+                    <View style={{ alignItems: 'center', padding: 20 }} >
+                        <Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} >Escolha o sabor do seu Açai</Text>
+                    </View>
                     <View style={{ borderWidth: 0.5, borderRadius: 10 }} >
                         <RadioGroup color='purple'
                             onSelect={(index, value) => this.onSelect(index, value)}>
@@ -123,12 +143,12 @@ export default class Produto extends Component {
                                 <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Açai Fitnes (Diete)</Text>
                             </RadioButton>
                         </RadioGroup>
-
-                        {/* <Text style={styles.text}>{this.state.text}</Text> */}
-
                     </View>
 
-                    <View style={{ alignItems: 'center', padding: 20 }} ><Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} > Escolha Até Três Adicionais </Text></View>
+                    {/* Inicio Switchs */}
+                    <View style={{ alignItems: 'center', padding: 20 }} >
+                        <Text style={{ fontSize: 20, color: 'purple', fontWeight: '300' }} > Escolha Até Três Adicionais </Text>
+                    </View>
                     <View style={styles.styleList} >
                         <View style={{ paddingRight: 210 }} >
                             <Text style={{ fontSize: 20, color: 'black', fontWeight: '300' }} >Banana</Text>
@@ -174,6 +194,32 @@ export default class Produto extends Component {
                             style={{ marginBottom: 10 }}
                             value={this.state.Amendoim} />
                     </View>
+
+                        {/* Fim dos Switchs */}
+
+                    <View style={{ padding: 20 }} ></View>
+                    <View style={styles.quantidadeConteiner} >
+                        <View style={{ paddingRight: 5 }} >
+                            <Text style={{ fontSize: 18, color: 'black', fontWeight: '300' }} >Quantidade de Potes:
+                            </Text>
+                        </View>
+                        <View style={{ padding: 10 }} >
+                            <Button
+                                title="+"
+                                onPress={() => { this.inc(); }}
+                            />
+                        </View>
+                        <View style={{ padding: 5, borderWidth: 0.4 }} >
+                            <Text style={{ fontSize: 20, fontWeight: '300' }} >{this.state.Inicial}</Text>
+                        </View>
+                        <View style={{ padding: 10 }} >
+                            <Button
+                                title='-'
+                                onPress={() => { this.dec() }}
+                            />
+                        </View>
+                    </View>
+
                     <View style={{ paddingTop: 15 }} >
                         <Button
                             color='purple'
@@ -186,6 +232,7 @@ export default class Produto extends Component {
         );
     }
 }
+//#endregion
 const styles = StyleSheet.create({
     MainContainer: {
         // justifyContent: 'center',
@@ -196,6 +243,17 @@ const styles = StyleSheet.create({
     },
     styleList: {
         padding: 10,
+        // paddingHorizontal: 15,
+        borderColor: 'black',
+        borderWidth: 0.5,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+
+    quantidadeConteiner: {
+        padding: 20,
         // paddingHorizontal: 15,
         borderColor: 'black',
         borderWidth: 0.5,
