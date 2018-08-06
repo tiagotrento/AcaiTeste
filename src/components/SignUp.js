@@ -27,6 +27,7 @@ export default class SignUp extends Component {
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#fff"
           placeholder="Email"
+          autoCapitalize='none'
           onChangeText={email => this.setState({ email })}
           value={this.state.email} />
 
