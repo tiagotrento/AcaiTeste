@@ -23,27 +23,34 @@ export default class Produto extends Component {
             Amendoim: false
         };
 
-        this.state = {Inicial: 1};
-    
-
+        this.state = {
+            Inicial: 1
+        };
+        firebase.database().ref(`/Quantidade de Potes/`)
+            .child('Quantidade').set(this.state.Inicial = 1)
     }
-    
 
-    inc = () => {
+    inc() {
         this.setState(prevState => ({ Inicial: prevState.Inicial + 1 }));
+        firebase.database().ref(`/Quantidade de Potes/`)
+            .child('Quantidade').set(this.state.Inicial + 1)
     }
 
     dec() {
+        firebase.database().ref(`/Quantidade de Potes/`)
+            .child('Quantidade').set(this.state.Inicial - 1)
         this.setState(prevState => ({ Inicial: prevState.Inicial - 1 }));
-        if (this.state.Inicial=='1') {
-            this.setState(prevState => ({ Inicial: prevState.Inicial + 1 }))
+        if (this.state.Inicial == '1') {
+            this.setState(prevState => ({ Inicial: prevState.Inicial + 1 }));
+            firebase.database().ref(`/Quantidade de Potes/`)
+                .child('Quantidade').set(this.state.Inicial)
         }
     };
 
     finalizaPedidoFnc() {
 
     };
-   
+
     // ---------RADIO BUTTON------------
     onSelect(index, value) {
         this.setState({
@@ -114,7 +121,7 @@ export default class Produto extends Component {
         }
         //#endregion
     };
-//#region "toto o render"
+    //#region "toto o render"
     render() {
         return (
 
@@ -195,7 +202,7 @@ export default class Produto extends Component {
                             value={this.state.Amendoim} />
                     </View>
 
-                        {/* Fim dos Switchs */}
+                    {/* Fim dos Switchs */}
 
                     <View style={{ padding: 20 }} ></View>
                     <View style={styles.quantidadeConteiner} >
